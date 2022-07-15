@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrossingOutApplication {
+public class CrossingOutServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CrossingOutApplication.class, args);
+		SpringApplication.run(CrossingOutServerApplication.class, args);
 		System.out.println("Xing:started");
 	}
 }
