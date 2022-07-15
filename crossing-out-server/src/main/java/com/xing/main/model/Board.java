@@ -32,7 +32,6 @@ public class Board {
 	@JoinTable(name = "board_todolist", joinColumns = @JoinColumn(name = "board_id"), inverseJoinColumns = @JoinColumn(name = "todolist_id"))
 	private List<TodoList> todoLists = new ArrayList<>();
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_board")
 	private List<User> users = new ArrayList<>();
 
 	public String getName() {
