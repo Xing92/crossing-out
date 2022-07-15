@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "todolist")
+@Table(name = "board")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 public class Board {
 
@@ -30,6 +31,9 @@ public class Board {
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "board_todolist", joinColumns = @JoinColumn(name = "board_id"), inverseJoinColumns = @JoinColumn(name = "todolist_id"))
 	private List<TodoList> todoLists = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_board")
+	private List<User> users = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -55,4 +59,15 @@ public class Board {
 		this.todoLists.add(todoList);		
 	}
 
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public void addUser(User user) {
+		this.users.add(user);
+	}
 }

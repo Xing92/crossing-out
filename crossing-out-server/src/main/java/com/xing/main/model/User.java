@@ -34,7 +34,8 @@ public class User {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_board", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "board_id"))
+//	@JoinTable(name = "user_board", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "board_id"))
+	@JoinTable(name = "user_board")
 	private List<Board> boards = new ArrayList<>();
 
 	public Long getId() {
@@ -67,6 +68,18 @@ public class User {
 
 	public void addRole(Role role) {
 		this.roles.add(role);
+	}
+
+	public List<Board> getBoards() {
+		return boards;
+	}
+
+	public void setBoards(List<Board> boards) {
+		this.boards = boards;
+	}
+
+	public void addBoard(Board board) {
+		this.boards.add(board);
 	}
 
 }
