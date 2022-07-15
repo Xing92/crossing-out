@@ -1,9 +1,10 @@
 package com.xing.main.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -30,11 +30,12 @@ public class User {
 	@Column(unique = true)
 	private String username;
 	private String password;
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Kingdom kingdom;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_board", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "board_id"))
+	private List<Board> boards = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -55,14 +56,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-//	public Kingdom getKingdom() {
-//		return kingdom;
-//	}
-//
-//	public void setKingdom(Kingdom kingdom) {
-//		this.kingdom = kingdom;
-//	}
 
 	public Set<Role> getRoles() {
 		return roles;

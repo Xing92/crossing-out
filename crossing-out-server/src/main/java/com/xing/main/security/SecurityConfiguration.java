@@ -58,8 +58,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
 //                .antMatchers(SWAGGER_WHITE_LIST).permitAll()
                 
-        
-        		.antMatchers("/api/user/create").permitAll()
+
+        		.antMatchers("/api/test/create-board-todolist-entry").permitAll()
+				.antMatchers("/api/user/create").permitAll()
                 .antMatchers("/api/user/all").hasAuthority("USER")
                 .antMatchers("/api/user/me").hasAuthority("USER")
                 .antMatchers("/api/kingdom/create").hasAuthority("USER")
