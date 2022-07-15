@@ -59,19 +59,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers(SWAGGER_WHITE_LIST).permitAll()
                 
         
-        //TODO: uncomment below:
-		/*
-		 * .antMatchers("/api/user/create").permitAll()
-		 * .antMatchers("/api/user/all").hasAuthority("USER")
-		 * .antMatchers("/api/user/me").hasAuthority("USER")
-		 * .antMatchers("/api/kingdom/create").hasAuthority("USER")
-		 * .antMatchers("/api/kingdom/me").hasAuthority("USER")
-		 * .antMatchers("/api/kingdom/me/action").hasAuthority("USER")
-		 * .antMatchers("/api/kingdom/me/turn").hasAuthority("USER")
-		 * .antMatchers("/**").hasAuthority("ADMIN")
-		 */
-                
-                
+        		.antMatchers("/api/user/create").permitAll()
+                .antMatchers("/api/user/all").hasAuthority("USER")
+                .antMatchers("/api/user/me").hasAuthority("USER")
+                .antMatchers("/api/kingdom/create").hasAuthority("USER")
+                .antMatchers("/api/kingdom/me").hasAuthority("USER")
+                .antMatchers("/api/kingdom/me/action").hasAuthority("USER")
+                .antMatchers("/api/kingdom/me/turn").hasAuthority("USER")
+                .antMatchers("/**").hasAuthority("ADMIN")
+
                 
 //                .antMatchers("/api/employee/simple").hasRole("USER")
 //                .antMatchers("/api/system/**").hasAuthority("ADMIN") // TODO allow this line
