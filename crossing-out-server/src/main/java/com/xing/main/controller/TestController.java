@@ -40,13 +40,14 @@ public class TestController {
 		Board board = new Board();
 		board.setName("Board name");
 		board.addTodoList(todoList);
-		Optional<User> user = userRepository.findById(1);
-		user.ifPresent(u -> u.addBoard(board));
-		user.ifPresent(board::addUser);
+		User user = userRepository.findByUsername("name");
+		user.addBoard(board);
+		board.addUser(user);
+		//TODO: kolejność zapisu jest zła, albo trzeba uzależnić jeden obiekt od innego (board-user)
 		taskRepository.save(task);
 		todoListRepository.save(todoList);
 		boardRepository.save(board);
-		userRepository.save(user.get());
+		userRepository.save(user);
 		return board;
 	}
 }

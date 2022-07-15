@@ -16,7 +16,7 @@ public class InitialConfiguration {
 
 	@PostConstruct
 	public void init() {
-		createRoles();
+//		createRoles();
 		System.out.println("XING:Initial configuration done");
 	}
 

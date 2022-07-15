@@ -59,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers(SWAGGER_WHITE_LIST).permitAll()
                 
 
-        		.antMatchers("/api/test/create-board-todolist-entry").permitAll()
+        		.antMatchers("/api/test/create-board-todolist-task").permitAll()
 				.antMatchers("/api/user/create").permitAll()
                 .antMatchers("/api/user/all").hasAuthority("USER")
                 .antMatchers("/api/user/me").hasAuthority("USER")
